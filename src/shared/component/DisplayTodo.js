@@ -4,15 +4,15 @@ import styled from 'styled-components'
 
 const DisplayTodo = ({ item }) => {
 
-	return (
-		<Wrapper>
-			{ item.name ?
-				<><Text >{item.name}</Text><Status>{item.status}</Status><br /></>
-				:
-				<Text >{'No Todos'}</Text>
-			}
-		</Wrapper>
-	)
+    return (
+        <Wrapper>
+            { item.name ?
+                <><Text >{item.name}</Text><Status>{item.status}</Status><br /></>
+                :
+                <Text >{'No Todos'}</Text>
+            }
+        </Wrapper>
+    )
 }
 
 const Text = styled.span`

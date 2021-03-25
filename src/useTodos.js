@@ -77,7 +77,7 @@ function reducer(state, action) {
         todos: []
       }
 
-      const list = state.list.concat(item)
+      const list = [...state.list, item] //state.list.concat(item)
       return { list }
 
     default:

@@ -6,7 +6,7 @@ import DisplayTodo from '../../../shared/component/DisplayTodo';
 
 const TodoList = ({ id, todos, addTodos }) => {
 
-	const [allTodos, setAllTodos] = useState(todos)
+	const [allTodos, setAllTodos] = useState(todos || [])
 
 	const [addNewField, setAddNewField] = useState(false);
 

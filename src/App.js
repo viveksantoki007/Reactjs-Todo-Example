@@ -8,15 +8,38 @@ import AddTask from './features/todos/container/AddTask';
 import TaskList from './features/todos/container/TaskList';
 import SelectStatus from './shared/component/select';
 
-function App() {
 
-	const { createTask, list, addTodos } = useTodos();
+function App() {
 	const [todoList, setTodoList] = useState(list);
-	console.log(list)
-	console.log(todoList)
+	const { list } = useTodos();
+	let allTask = list
+	const addTask = (item) => {
+		const obj = {
+			id: Math.floor(Math.random() * 1000),
+			listName: item,
+			todoList: []
+		}
+		allTask = [...todoList, obj];
+		setTodoList([...todoList, obj])
+	}
+
+	const addTodos = (id, todos) => {
+		const response = todoList.map(item => {
+			if (item.id === id) {
+				return {
+					...item,
+					todos: [...todos]
+				}
+			}
+			return item
+		})
+		allTask = [...response];
+		setTodoList(response)
+	}
+
 	const onChangeStatus = (value) => {
 		if (value !== 'All') {
-			let response = list.map((item) => {
+			let response = allTask.map((item) => {
 				if (item.todos.filter((item) => item.status === value).length > 0) {
 					return {
 						...item,
@@ -27,9 +50,10 @@ function App() {
 			response = response.filter(function (element) {
 				return element !== undefined;
 			});
+			console.log(allTask);
 			setTodoList(response);
 		} else {
-			setTodoList(list);
+			setTodoList(allTask);
 		}
 	}
 
@@ -37,7 +61,7 @@ function App() {
 		<Wrapper>
 			<TodosWrapper>
 				<FilterWrapper>
-					<AddTask onAddTodo={createTask} />
+					<AddTask onAddTodo={addTask} />
 					<SelectStatus onChangeStatus={onChangeStatus} />
 				</FilterWrapper>
 				<TaskList items={todoList} addTodos={addTodos} />
@@ -60,17 +84,7 @@ const Wrapper = styled.div`
   font-size: 24px;
   color: white;
 `
-const DropDownWrapper = styled.div`
-	margin-left:50px
-	margin-top:13px
-`
 
-const Select = styled.select`
-	height: 40px
-	width: 200px
-	background: #3b4049
-	color: white 
-	`
 const TodosWrapper = styled.div`
   max-width: 500px;
   display: flex;

@@ -8,7 +8,7 @@ const AddNewTodo = ({ addNewToDo }) => {
 
 	const [todoData, setTodoData] = useState({
 		name: '',
-		status: ''
+		status: 'Compelted'
 	});
 
 	const onClickSubmit = () => {
@@ -26,9 +26,11 @@ const AddNewTodo = ({ addNewToDo }) => {
 								placeholder='Add new todo...'
 								onChange={(e) => setTodoData({ ...todoData, name: e.target.value })}
 							/>
-							<Select onChange={(e) => setTodoData({ ...todoData, status: e.target.value })} name="cars" id="cars">
-								<option value='compelted'>Completed</option>
-								<option value='active'>Active</option>
+							<Select onChange={(e) => {
+								setTodoData({ ...todoData, status: e.target.value })
+							}}>
+								<option value='Compelted'>Completed</option>
+								<option value='Active'>Active</option>
 							</Select>
 							<Button onClick={() => onClickSubmit()}>
 								Submit
