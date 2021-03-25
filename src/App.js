@@ -12,16 +12,20 @@ function App() {
 
 	const { createTask, list, addTodos } = useTodos();
 	const [todoList, setTodoList] = useState(list);
-
+	console.log(list)
+	console.log(todoList)
 	const onChangeStatus = (value) => {
 		if (value !== 'All') {
-			const response = todoList.filter((item) => {
+			let response = list.map((item) => {
 				if (item.todos.filter((item) => item.status === value).length > 0) {
 					return {
 						...item,
 						todos: item.todos.filter((item) => item.status === value)
 					};
 				}
+			});
+			response = response.filter(function (element) {
+				return element !== undefined;
 			});
 			setTodoList(response);
 		} else {
