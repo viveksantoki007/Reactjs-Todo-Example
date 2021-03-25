@@ -57,12 +57,12 @@ const Wrapper = styled.div`
   color: white;
 `
 const DropDownWrapper = styled.div`
-	margin-left:100px
+	margin-left:50px
 	margin-top:13px
 `
 
 const Select = styled.select`
-	height: 30px
+	height: 40px
 	width: 200px
 	background: #3b4049
 	color: white 

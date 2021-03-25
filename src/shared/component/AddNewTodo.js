@@ -43,7 +43,7 @@ const AddNewTodo = ({ addNewToDo }) => {
 
 const Wrapper = styled.p`
   font-size: 24px;
-  cursor: pointer;
+  
 `
 
 const MainWrapper = styled.div`
@@ -66,10 +66,10 @@ const Input = styled.input`
   background: #3b4049;
   color: #fff;
   border: none;
-  border-radius: 3px;
-  padding: 10px 18px;
+  border-radius: 5px;
+  padding: 3px;
   font-size: 24px;
-  height: 40px;
+  height: 30px;
   width: 500px;
   margin-bottom: 16px;
 
@@ -79,17 +79,19 @@ const Input = styled.input`
 `
 
 const Select = styled.select`
-	height: 30px
-	
+	height: 38px
+	font-size:17px
 	background: #3b4049
 	color: white 
 	`
 const Button = styled.button`
- height: 30px
+ color:white
  font-size:17px
  width:100px
  margin-top:40px
  align-self:center
+ background:#3b4049
+ border-radius:3px
  `
 
 export default AddNewTodo;

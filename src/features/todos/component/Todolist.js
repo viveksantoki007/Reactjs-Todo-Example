@@ -6,45 +6,54 @@ import DisplayTodo from '../../../shared/component/DisplayTodo';
 
 const TodoList = ({ id, todos, addTodos }) => {
 
-    const [allTodos, setAllTodos] = useState(todos)
+	const [allTodos, setAllTodos] = useState(todos)
 
-    const [addNewField, setAddNewField] = useState(false);
+	const [addNewField, setAddNewField] = useState(false);
 
-    const onClickAddTodo = () => {
-        setAddNewField(true);
-    }
+	const onClickAddTodo = () => {
+		setAddNewField(true);
+	}
 
-    const onClickSubmit = (newTodo) => {
-        const newTodos = [...allTodos, newTodo];
-        setAllTodos(newTodos);
-        addTodos(id, newTodos);
-        setAddNewField(false);
-    }
+	const onClickSubmit = (newTodo) => {
+		const newTodos = [...allTodos, newTodo];
+		setAllTodos(newTodos);
+		addTodos(id, newTodos);
+		setAddNewField(false);
+	}
 
-    return (
-        <Wrapper>
-            <code>
-                <div>
-                    {allTodos.length > 0 && allTodos.map((item) => {
-                        return (
-                            <DisplayTodo item={item} />
-                        )
-                    })}
-                    {addNewField && (
-                        <AddNewTodo
-                            addNewToDo={(item) => onClickSubmit(item)}
-                        />
-                    )}
-                    <Plus onClick={() => addNewField ? null : onClickAddTodo()}>+</Plus>
-                </div>
-            </code>
-        </Wrapper >
-    )
+	return (
+		<Wrapper>
+			<code>
+				<div>
+					{allTodos.length > 0 && allTodos.map((item) => {
+						return (
+							<DisplayTodo item={item} />
+						)
+					})}
+					{addNewField && (
+						<AddNewTodo
+							addNewToDo={(item) => onClickSubmit(item)}
+						/>
+					)}
+
+					<AddTodo>
+						<Plus onClick={() => addNewField ? null : onClickAddTodo()}>+</Plus>
+					</AddTodo>
+				</div>
+			</code>
+		</Wrapper >
+	)
 }
+
+const AddTodo = styled.div`
+  background:white
+	width:30px
+	border-radius:15px
+`
 
 const Wrapper = styled.p`
   font-size: 24px;
-  cursor: pointer;
+  
 `
 
 const Text = styled.span`
@@ -52,7 +61,11 @@ const Text = styled.span`
   margin: 5px
 `
 const Plus = styled.span`
+	font-weight:bold
+  margin-top:20px
   margin-right: 20px;
+	color:black
+	margin-left:7px
 `
 
 const Minus = styled.span`

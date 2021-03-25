@@ -3,19 +3,19 @@ import React from 'react'
 import styled from 'styled-components'
 
 const AddTask = ({ onAddTodo }) => {
-    const handleKeyPress = e => {
-        if (e.key === 'Enter') {
-            onAddTodo(e.target.value)
-        }
-    }
+	const handleKeyPress = e => {
+		if (e.key === 'Enter') {
+			onAddTodo(e.target.value)
+		}
+	}
 
-    return (
-        <Input
-            type='text'
-            onKeyPress={handleKeyPress}
-            placeholder='Add new todo...'
-        />
-    )
+	return (
+		<Input
+			type='text'
+			onKeyPress={handleKeyPress}
+			placeholder='Add new list...'
+		/>
+	)
 }
 
 const Input = styled.input`
