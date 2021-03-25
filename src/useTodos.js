@@ -5,17 +5,17 @@ const initialState = {
     {
       id: 1,
       listName: 'Read File',
-      todos: [{ name: 'read all', status: 'completed' }, { name: 'read important', status: 'active' }]
+      todos: [{ name: 'read all', status: 'Completed' }, { name: 'read important', status: 'Active' }]
     },
     {
       id: 2,
       listName: 'Fantasy Football',
-      todos: [{ name: 'Play Football', status: 'completed' }, { name: 'Watch Football', status: 'active' }]
+      todos: [{ name: 'Play Football', status: 'Completed' }, { name: 'Watch Football', status: 'Active' }]
     },
     {
       id: 3,
       listName: 'Fantasy Cricket',
-      todos: [{ name: 'Play Cricket', status: 'completed' }, { name: 'Watch Cricket', status: 'active' }]
+      todos: [{ name: 'Play Cricket', status: 'Completed' }]
     }
   ]
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import styled from 'styled-components'
 
@@ -6,24 +6,37 @@ import useTodos from './useTodos'
 
 import AddTask from './features/todos/container/AddTask';
 import TaskList from './features/todos/container/TaskList';
+import SelectStatus from './shared/component/select';
 
 function App() {
-	const { createTask, list, addTodos } = useTodos()
+
+	const { createTask, list, addTodos } = useTodos();
+	const [todoList, setTodoList] = useState(list);
+
+	const onChangeStatus = (value) => {
+		if (value !== 'All') {
+			const response = todoList.filter((item) => {
+				if (item.todos.filter((item) => item.status === value).length > 0) {
+					return {
+						...item,
+						todos: item.todos.filter((item) => item.status === value)
+					};
+				}
+			});
+			setTodoList(response);
+		} else {
+			setTodoList(list);
+		}
+	}
 
 	return (
 		<Wrapper>
 			<TodosWrapper>
 				<FilterWrapper>
 					<AddTask onAddTodo={createTask} />
-					<DropDownWrapper>
-						<Select name="cars" id="cars">
-							<option value="">All</option>
-							<option value={true}>Completed</option>
-							<option value={false}>Active</option>
-						</Select>
-					</DropDownWrapper>
+					<SelectStatus onChangeStatus={onChangeStatus} />
 				</FilterWrapper>
-				<TaskList items={list} addTodos={addTodos} />
+				<TaskList items={todoList} addTodos={addTodos} />
 			</TodosWrapper>
 		</Wrapper>
 	)
